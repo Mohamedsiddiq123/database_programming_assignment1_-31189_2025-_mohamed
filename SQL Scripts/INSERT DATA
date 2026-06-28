@@ -1,0 +1,22 @@
+INSERT INTO Students VALUES (1, 'Ali', 'Hassan', 'Male', 'CS');
+INSERT INTO Students VALUES (2, 'Sara', 'Mohamed', 'Female', 'IS');
+INSERT INTO Students VALUES (3, 'John', 'Peter', 'Male', 'SE');
+INSERT INTO Students VALUES (4, 'Amina', 'Ibrahim', 'Female', 'CS');
+INSERT INTO Students VALUES (5, 'David', 'Kim', 'Male', 'IS');
+
+INSERT INTO Courses VALUES (101, 'Database Systems', 3);
+INSERT INTO Courses VALUES (102, 'Programming', 4);
+INSERT INTO Courses VALUES (103, 'Web Development', 3);
+
+INSERT INTO Instructors VALUES (201, 'Dr. Ahmed', 101);
+INSERT INTO Instructors VALUES (202, 'Dr. Mary', 102);
+INSERT INTO Instructors VALUES (203, 'Dr. James', 103);
+
+INSERT INTO Enrollments VALUES (301, 1, 101, 'Fall2026', 85);
+INSERT INTO Enrollments VALUES (302, 1, 102, 'Fall2026', 78);
+INSERT INTO Enrollments VALUES (303, 2, 101, 'Fall2026', 92);
+INSERT INTO Enrollments VALUES (304, 3, 103, 'Fall2026', 88);
+INSERT INTO Enrollments VALUES (305, 4, 102, 'Fall2026', 74);
+INSERT INTO Enrollments VALUES (306, 5, 101, 'Fall2026', 81);
+
+COMMIT;
