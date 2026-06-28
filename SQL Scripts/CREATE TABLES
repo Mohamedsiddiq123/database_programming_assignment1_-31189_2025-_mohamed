@@ -1,0 +1,33 @@
+CREATE TABLE Students (
+    student_id NUMBER PRIMARY KEY,
+    first_name VARCHAR2(50),
+    last_name VARCHAR2(50),
+    gender VARCHAR2(10),
+    department VARCHAR2(50)
+);
+
+CREATE TABLE Courses (
+    course_id NUMBER PRIMARY KEY,
+    course_name VARCHAR2(100),
+    credit_hours NUMBER
+);
+
+CREATE TABLE Instructors (
+    instructor_id NUMBER PRIMARY KEY,
+    instructor_name VARCHAR2(100),
+    course_id NUMBER,
+    CONSTRAINT fk_course FOREIGN KEY (course_id)
+    REFERENCES Courses(course_id)
+);
+
+CREATE TABLE Enrollments (
+    enrollment_id NUMBER PRIMARY KEY,
+    student_id NUMBER,
+    course_id NUMBER,
+    semester VARCHAR2(20),
+    grade NUMBER(5,2),
+    CONSTRAINT fk_student FOREIGN KEY (student_id)
+    REFERENCES Students(student_id),
+    CONSTRAINT fk_course2 FOREIGN KEY (course_id)
+    REFERENCES Courses(course_id)
+);
