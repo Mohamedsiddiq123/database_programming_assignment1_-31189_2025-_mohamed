@@ -1,0 +1,61 @@
+-- Simple CTE
+WITH StudentGrades AS (
+    SELECT s.student_id, s.first_name, e.grade
+    FROM Students s
+    JOIN Enrollments e ON s.student_id = e.student_id
+)
+SELECT * FROM StudentGrades;
+
+-- Multiple CTE
+WITH AvgGrades AS (
+    SELECT course_id, AVG(grade) avg_grade
+    FROM Enrollments
+    GROUP BY course_id
+),
+StudentData AS (
+    SELECT s.student_id, s.first_name, c.course_name, e.grade, e.course_id
+    FROM Students s
+    JOIN Enrollments e ON s.student_id = e.student_id
+    JOIN Courses c ON e.course_id = c.course_id
+)
+SELECT *
+FROM StudentData sd
+JOIN AvgGrades ag
+ON sd.course_id = ag.course_id;
+
+-- Recursive CTE
+WITH Numbers (num) AS (
+    SELECT 1 FROM dual
+    UNION ALL
+    SELECT num + 1
+    FROM Numbers
+    WHERE num < 10
+)
+SELECT * FROM Numbers;
+
+-- CTE with Aggregation
+WITH DeptAvg AS (
+    SELECT s.department,
+           AVG(e.grade) avg_grade
+    FROM Students s
+    JOIN Enrollments e
+      ON s.student_id = e.student_id
+    GROUP BY s.department
+)
+SELECT *
+FROM DeptAvg;
+
+-- CTE with JOIN
+WITH StudentCourse AS (
+    SELECT s.student_id,
+           s.first_name,
+           c.course_name,
+           e.grade
+    FROM Students s
+    JOIN Enrollments e
+      ON s.student_id = e.student_id
+    JOIN Courses c
+      ON e.course_id = c.course_id
+)
+SELECT *
+FROM StudentCourse;
